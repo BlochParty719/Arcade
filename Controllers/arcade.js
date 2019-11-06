@@ -2,7 +2,7 @@ const express = require('express')
 const Arcade = require('../Models/arcade.js')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/seed', (req, res) => {
   Arcade.create(
     [
       {
@@ -67,4 +67,39 @@ router.get('/', (req, res) => {
 
 router.get('/new', (req, res) => {
   res.render('Models/new.ejs')
+})
+
+// Index Route
+router.get('/Arcade', (req.res) => {
+  
+})
+
+// New Route
+router.get('/Arcade', (req.res) => {
+
+})
+
+// Create Route
+router.post('/Arcade', (req.res) => {
+
+})
+
+// Show Route
+router.get('/Arcade', (req.res) => {
+
+})
+
+// Edit Route
+router.get('/Arcade', (req.res) => {
+
+})
+
+// Update Route
+router.put('/Arcade', (req.res) => {
+
+})
+
+// Delete Route
+router.delete('/Arcade', (req.res) => {
+
 })

@@ -18,6 +18,9 @@ false})
 const arcadeController = require('.controllers/arcade.js')
 app.use('/', arcadeController)
 
+// Route for Home Page
+app.get()
+
 // Error / Success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
