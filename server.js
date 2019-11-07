@@ -16,10 +16,12 @@ false})
 
 // Controller
 const arcadeController = require('.controllers/arcade.js')
-app.use('/', arcadeController)
+app.use('/arcade', arcadeController)
 
 // Route for Home Page
-app.get()
+app.get('/', (req, res) => {
+  res.render('index.ejs')
+})
 
 // Error / Success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));

@@ -8,4 +8,5 @@ const arcadeSchema = mongoose.Schema({
   Price: {type: Number}
 })
 
-module.exports = mongoose.model('Arcade', arcadeSchema)
+const Arcade = mongoose.model('Arcade', arcadeSchema)
+module.exports = Arcade
