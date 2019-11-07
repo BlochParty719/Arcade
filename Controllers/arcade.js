@@ -80,9 +80,12 @@ router.get('/new', (req, res) => {
 
 // Index Route
 router.get('/', (req.res) => {
-  Arcade.find({}, (error, ) => {
-    res.render('index.ejs', {
-      arcade:
+  Arcade.find({}, (error, allArcade) => {
+    res.render(
+      'index.ejs',
+      {
+        arcade:
+      }
     })
   })
 })
@@ -93,14 +96,14 @@ router.get('/:id', (req.res) => {
 })
 
 // Create Route
-router.post('/Arcade', (req.res) => {
- Arcade.create(req.body, (error ,) => {
-
+router.post('/arcade', (req.res) => {
+ Arcade.create(req.body, (error ,createdArcade) => {
+   res.redirect('/arcade')
  })
 })
 
 // Show Route
-router.get('/Arcade', (req.res) => {
+router.get('/arcade', (req.res) => {
 
 })
 
@@ -114,14 +117,16 @@ router.get('/:id/edit', (req.res) => {
 })
 
 // Update Route
-router.put('/Arcade', (req.res) => {
-
+router.put('/:id', (req.res) => {
+  Arcade.findByIdAndUpdate(req.params.id, req, body, () => {
+    res.redirect('/arcade')
+  })
 })
 
 // Delete Route
 router.delete('/Arcade', (req.res) => {
   Arcade.findByIdAndRemove(req.params.id, (err, deletedArcade) => {
-    res.redirect('/project-2')
+    res.redirect('/arcade')
   })
 })
 
