@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/BlochParty719/Project-2#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",

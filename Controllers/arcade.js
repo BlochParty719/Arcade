@@ -71,6 +71,9 @@ router.get('/seed', (req, res) => {
         Image:
       }
     ]
+    (error, data) => {
+      res.redirect('/arcade')
+    }
   )
 })
 
@@ -104,14 +107,16 @@ router.post('/arcade', (req.res) => {
 
 // Show Route
 router.get('/arcade', (req.res) => {
+  Arcade.findById(req.params.id, (error, foundArcade) => {
 
+  })
 })
 
 // Edit Route
 router.get('/:id/edit', (req.res) => {
-  Arcade.findById(req.params.id, (error, ) => {
-    res.render('edit.ejs', {
-      Arcade:
+  Arcade.findById(req.params.id, (error, foundArcade) => {
+    res.render('arcade/views/edit.ejs', {
+      arcade:
     })
   })
 })
@@ -124,8 +129,8 @@ router.put('/:id', (req.res) => {
 })
 
 // Delete Route
-router.delete('/Arcade', (req.res) => {
-  Arcade.findByIdAndRemove(req.params.id, (err, deletedArcade) => {
+router.delete('/arcade', (req.res) => {
+  Arcade.findByIdAndRemove(req.params.id, (error, deletedArcade) => {
     res.redirect('/arcade')
   })
 })

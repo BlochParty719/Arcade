@@ -14,9 +14,17 @@ const MONGODB_URI = process.env.MONGODB_URI
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify:
 false})
 
-// Controller
-const arcadeController = require('.controllers/arcade.js')
+//Controller
+const arcadeController = require('./controllers/arcade.js')
 app.use('/arcade', arcadeController)
+
+const usersController = require('./controllers/users.js')
+app.use('/users', usersController)
+
+const sessionsController = require('./controllers/sessions.js')
+app.use('/sessions', sessionsController)
+
+app.get()
 
 // Route for Home Page
 app.get('/', (req, res) => {
@@ -31,6 +39,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // Middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: false}))
+app.use(json())
 app.use(methodOverride('_method'))
 
 // Routes
