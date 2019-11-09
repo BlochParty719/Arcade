@@ -11,8 +11,9 @@ const Port = process.env.PORT
 
 // Database
 const MONGODB_URI = process.env.MONGODB_URI
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify:
-false})
+
+// Connect to Mongo
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify:false})
 
 //Controller
 const arcadeController = require('./controllers/arcade.js')
@@ -24,11 +25,9 @@ app.use('/users', usersController)
 const sessionsController = require('./controllers/sessions.js')
 app.use('/sessions', sessionsController)
 
-app.get()
-
 // Route for Home Page
 app.get('/', (req, res) => {
-  res.render('index.ejs')
+  res.render('home.ejs')
 })
 
 // Error / Success
@@ -39,7 +38,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // Middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: false}))
-app.use(json())
+app.use(express.json())
 app.use(methodOverride('_method'))
 
 // Routes
