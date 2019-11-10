@@ -25,21 +25,21 @@ router.get('/seed', (req, res) => {
         Year: 1980,
         Genre: "Maze",
         Price: 369,
-      }
+      },
       {
         Game: "Donkey Kong",
         Publisher: "Nintendo",
         Year: 1981,
         Genre:"Platform",
         Price: 3295,
-      }
+      },
       {
         Game: "Street Fighter II",
         Publisher: "Capcom",
         Year: 1991,
         Genre: "Fighting",
         Price: 245,
-      }
+      },
       {
         Game: "Mortal Kombat",
         Publisher:"Midway",
@@ -47,14 +47,14 @@ router.get('/seed', (req, res) => {
         Genre: "Fighting",
         Price: 379,
 
-      }
+      },
       {
         Game: "Galaga",
         Publisher: "Midway",
         Year: 1981,
         Genre: "Shooter",
         Price: 369,
-      }
+      },
       {
         Game: "Mario Bros",
         Publisher: "Nintendo",
@@ -62,30 +62,23 @@ router.get('/seed', (req, res) => {
         Genre: "Platform",
         Price: 3495
       }
-    ]
-    (error, data) => {
-      res.redirect('/arcade')
-    }
-  )
-})
+    ])
+  })
 
 // Index Route
-router.get('/arcade', (req.res) => {
-  Arcade.find({}, (error, allArcade) => {
+router.get('/arcade', (req, res) => {
     res.render(
-      'index.ejs',
-      {
-        arcade:allArcade
-      }
+    'index.ejs',
+    {
+      arcade:allArcade
     })
   })
-})
 
 // Show Route
-router.get('/arcade', (req.res) => {
+router.get('/arcade', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
-      'show.ejs'
+      'show.ejs',
       {
         arcade:foundArcade
       }
@@ -94,21 +87,21 @@ router.get('/arcade', (req.res) => {
 })
 
 // New Route
-router.get('/:id', (req.res) => {
+router.get('/:id', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
 
   })
 })
 
 // Create Route
-router.post('/arcade', (req.res) => {
+router.post('/arcade', (req, res) => {
  Arcade.create(req.body, (error ,createdArcade) => {
    res.redirect('/arcade')
  })
 })
 
 // Edit Route
-router.get('/:id/edit', (req.res) => {
+router.get('/:id/edit', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
       'arcade/views/edit.ejs',
@@ -119,14 +112,14 @@ router.get('/:id/edit', (req.res) => {
 })
 
 // Update Route
-router.put('/:id', (req.res) => {
+router.put('/:id', (req, res) => {
   Arcade.findByIdAndUpdate(req.params.id, req.body, (error, updatedModel) => {
     res.redirect('/arcade')
   })
 })
 
 // Delete Route
-router.delete('/arcade', (req.res) => {
+router.delete('/arcade', (req, res) => {
   Arcade.findByIdAndRemove(req.params.id, (error, deletedArcade) => {
     res.redirect('/arcade')
   })
