@@ -8,41 +8,45 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Port
-const Port = process.env.PORT || 3003
+const PORT = process.env.PORT || 3003
 
 // Database
 const MONGODB_URI = process.env.MONGODB_URI
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify:false})
+mongoose.connect(MONGODB_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false}),
+  () => {
+    console.log('Connected to mongoose');
+  }
 
-//Controller
-const arcadeController = require('./controllers/arcade.js')
-app.use('/arcade', arcadeController)
+  //Controller
+  const arcadeController = require('./controllers/arcade.js')
+  app.use('/arcade', arcadeController)
 
-const sessionsController = require('./controllers/sessions.js')
-app.use('/sessions', sessionsController)
+  const sessionsController = require('./controllers/sessions.js')
+  app.use('/sessions', sessionsController)
 
-const usersController = require('./controllers/users.js')
-app.use('/users', usersController)
+  const usersController = require('./controllers/users.js')
+  app.use('/users', usersController)
 
-// Error / Success
-db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
-db.on('disconnected', () => console.log('mongo disconnected'));
+  // Error / Success
+  db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
+  db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+  db.on('disconnected', () => console.log('mongo disconnected'));
 
-// Middleware
-app.use(express.static('public'))
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
+  // Middleware
+  app.use(express.static('public'))
+  app.use(express.urlencoded({extended: false}))
+  app.use(express.json())
 
-// Use Method Override
-app.use(methodOverride('_method'))
+  // Use Method Override
+  app.use(methodOverride('_method'))
 
-// Routes
-app.get('/', (req, res) => {
-  res.send('')
-})
+  // Routes
+  app.get('/', (req, res) => {
+    res.render('home.ejs')
+  })
 
-// Listener
-app.listen(Port, () => console.log('Listening on port:', Port));
+  // Listener
+  app.listen(PORT, () => console.log('Listening on port:', PORT));

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-      <h1></h1>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div class="container">
+    <h1>Arcade Cabinets for Sale</h1>
+    <form action="index.html" method="POST">
+      Game: <input type="text" name="Game" value="<%=Arcade.Game%>"/><br/>
+      Publisher: <input type="text" name="Publisher" value="<%=Arcade.Publisher%>"/><br/>
+      Image: <input type="text" name="Image" value="<%=Arcade.Image%>"/><br/>
+      Year: <input type="text" name="Year" value="<%=Arcade.Year%>"/><br/>
+      Genre: <input type="text" name="Genre" value="<%=Arcade.Genre%>"/><br/>
+      Price: <input type="text" name="Price" value="<%=Arcade.Price%>"/><br/>
+    </form>
+  </div>
+</body>
 </html>

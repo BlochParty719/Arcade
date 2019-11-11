@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Store</h1>
-      <% if(username) {%>
-          Hello, <%=username%>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div class="container">
+    <h1>Arcade Cabinets for Sale</h1>
+    <% if(username) {%>
+      Welcome, <%=username%>
       <%}%>
       <ul>
-          <% for(let i = 0; i < arcade.length; i++){%>
-            <h2> <%=Arcade.Game%> </h2>
-              <img src="<%=Arcade.Image%>" alt="<%=Arcade.Game%>">
+        <% for(let i = 0; i < arcade.length; i++){%>
+          <h2> <%=Arcade.[i]Game%> </h2>
+          <img src="<%=Arcade.Image%>" alt="<%=Arcade.Game%>">
+          <h2>Publisher: <%=Arcade.Publisher%></h2>
+          <h2>Originally Released in: <%=Arcade.Year%></h2>
+          <h2>Genre: <%=Arcade.Genre%></h2>
+          <h2>Buy Now For: <%=Arcade.Price%></h2>
           <%}%>
-      </ul>
-    </div>
-  </body>
-</html>
+        </ul>
+      </div>
+    </body>
+    </html>

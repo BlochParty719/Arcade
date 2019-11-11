@@ -1,6 +1,7 @@
 const express = require('express')
-const Arcade = require('../Models/arcade.js')
 const router = express.Router()
+const Arcade = require('../Models/arcade.js')
+const methodOverride = require('method-override')
 
 router.get('/seed', (req, res) => {
   Arcade.create(
@@ -69,27 +70,37 @@ router.get('/seed', (req, res) => {
         Year: 1983,
         Genre: "Platform",
         Price: 3495
-      },
-      (error, data) => {
-        res.redirect('/arcade')
       }
-    ])
-  })
+    ],
+    (error, data) => {
+      res.redirect('/arcade')
+    }
+  )
+})
 
 // Index Route
 router.get('/arcade', (req, res) => {
-    res.render(
-    'index.ejs',
-    {
-      arcade:allArcade
-    })
-  })
+  if(req.session.username){
+    Arcade.find,(error, allArcade) => {
+      res.render(
+        '/arcade/views/index.ejs',
+        {
+          arcade:allArcade,
+          username:req.session.username
+        }
+      )
+    }
+  }else {
+    res.redirect('/')
+  }
+
+})
 
 // Show Route
 router.get('/', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
-      'show.ejs',
+      'Views/arcade/show.ejs',
       {
         arcade:foundArcade
       }
@@ -106,34 +117,34 @@ router.get('/:id', (req, res) => {
 
 // Create Route
 router.post('/', (req, res) => {
- Arcade.create(req.body, (error ,createdArcade) => {
-   res.redirect('/arcade')
- })
+  Arcade.create(req.body, (error ,createdArcade) => {
+    res.redirect('/arcade')
+  })
 })
 
 // Edit Route
 router.get('/:id/edit', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
-      'arcade/views/edit.ejs',
+      'arcade/Views/Arcade/edit.ejs',
       {
         arcade:foundArcade
       })
+    })
   })
-})
 
-// Update Route
-router.put('/:id', (req, res) => {
-  Arcade.findByIdAndUpdate(req.params.id, req.body, (error, updatedModel) => {
-    res.redirect('/arcade')
+  // Update Route
+  router.put('/:id', (req, res) => {
+    Arcade.findByIdAndUpdate(req.params.id, req.body, (error, updatedModel) => {
+      res.redirect('/arcade')
+    })
   })
-})
 
-// Delete Route
-router.delete('/:id', (req, res) => {
-  Arcade.findByIdAndRemove(req.params.id, (error, deletedArcade) => {
-    res.redirect('/arcade')
+  // Delete Route
+  router.delete('/:id', (req, res) => {
+    Arcade.findByIdAndRemove(req.params.id, (error, deletedArcade) => {
+      res.redirect('/arcade')
+    })
   })
-})
 
-module.exports = router
+  module.exports = router
