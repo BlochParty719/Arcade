@@ -41,10 +41,8 @@ app.use(methodOverride('_method'))
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('Hello world')
+  res.send('')
 })
 
 // Listener
-app.listen(Port, () => {
-  console.log('Listening on port:', Port);
-})
+app.listen(Port, () => console.log('Listening on port:', Port));
