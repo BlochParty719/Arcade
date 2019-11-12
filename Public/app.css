@@ -1,29 +1,49 @@
-:root {
-
-}
-
 body {
+  background-color:
+}
+img {
+  width: 23%;
+}
+div {
 
 }
-
-a {
+nav {
 
 }
-
 .container {
-width:
-margin:
-display: 
+  display: flex;
 }
-
 h1 {
-font-family:
-font-size:
-font-weight:
+  font-family:
+  font-size:
+  font-weight:
 }
-
 h2 {
-font-family:
-font-size:
-font-weight:
+  font-family:
+  font-size:
+  font-weight:
+}
+ul {
+
+}
+li {
+  list-style-type: none;
+}
+table {
+border-spacing: 0.5em;
+width: auto;
+width: 95%;
+}
+thead {
+
+}
+tbody{
+
+}
+tr {
+
+}
+td, th {
+  padding: 0.5em;
+  text-align: center;
 }

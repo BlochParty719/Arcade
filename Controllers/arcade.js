@@ -52,7 +52,7 @@ router.get('/seed', (req, res) => {
         Image:"https://cdn11.bigcommerce.com/s-3m2fqnw/images/stencil/original/products/8652/16038/Mortal_Kombat_Arcade_Game_Med__12828.1518203481.jpg?c=2&imbypass=on",
         Year: 1992,
         Genre: "Fighting",
-        Price: 379,
+        Price: 3495,
 
       },
       {
