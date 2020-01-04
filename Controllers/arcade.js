@@ -78,7 +78,6 @@ router.get('/seed', (req, res) => {
   )
 })
 
-// Index Route
 router.get('/arcade', (req, res) => {
   if(req.session.username){
     Arcade.find,(error, allArcade) => {
@@ -96,7 +95,6 @@ router.get('/arcade', (req, res) => {
 
 })
 
-// Show Route
 router.get('/', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
@@ -108,21 +106,18 @@ router.get('/', (req, res) => {
   })
 })
 
-// New Route
 router.get('/:id', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
 
   })
 })
 
-// Create Route
 router.post('/', (req, res) => {
-  Arcade.create(req.body, (error ,createdArcade) => {
+  Arcade.create(req.body, (error, createdArcade) => {
     res.redirect('/arcade')
   })
 })
 
-// Edit Route
 router.get('/:id/edit', (req, res) => {
   Arcade.findById(req.params.id, (error, foundArcade) => {
     res.render(
@@ -133,14 +128,12 @@ router.get('/:id/edit', (req, res) => {
     })
   })
 
-  // Update Route
   router.put('/:id', (req, res) => {
     Arcade.findByIdAndUpdate(req.params.id, req.body, (error, updatedModel) => {
       res.redirect('/arcade')
     })
   })
 
-  // Delete Route
   router.delete('/:id', (req, res) => {
     Arcade.findByIdAndRemove(req.params.id, (error, deletedArcade) => {
       res.redirect('/arcade')
