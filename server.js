@@ -16,27 +16,27 @@ mongoose.connect(MONGODB_URI,
     console.log('Connected to mongoose');
   }
 
-  const arcadeController = require('./controllers/arcade.js')
+const arcadeController = require('./controllers/arcade.js')
   app.use('/arcade', arcadeController)
 
-  const sessionsController = require('./controllers/sessions.js')
+const sessionsController = require('./controllers/sessions.js')
   app.use('/sessions', sessionsController)
 
-  const usersController = require('./controllers/users.js')
+const usersController = require('./controllers/users.js')
   app.use('/users', usersController)
 
-  db.on('error', (error) => console.log(error.message + ' is Mongod not running?'));
-  db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
-  db.on('disconnected', () => console.log('mongo disconnected'));
+db.on('error', (error) => console.log(error.message + ' is Mongod not running?'))
+db.on('connected', () => console.log('mongo connected: ', MONGODB_URI))
+db.on('disconnected', () => console.log('mongo disconnected'));
 
-  app.use(express.static('public'))
-  app.use(express.urlencoded({extended: false}))
-  app.use(express.json())
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
-  app.use(methodOverride('_method'))
+app.use(methodOverride('_method'))
 
-  app.get('/', (req, res) => {
-    res.render('home.ejs')
-  })
+app.get('/', (req, res) => {
+  res.render('home.ejs')
+})
 
-  app.listen(PORT, () => console.log('Listening on port:', PORT));
+app.listen(PORT, () => console.log('Listening on port:', PORT))
