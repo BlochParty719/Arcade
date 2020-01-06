@@ -1,5 +1,5 @@
 {
-  "name": "project-2",
+  "name": "Arcade",
   "version": "1.0.0",
   "engines": {
     "node": "12.11.1"
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlochParty719/Project-2.git"
+    "url": "git+https://github.com/BlochParty719/Arcade.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BlochParty719/Project-2/issues"
+    "url": "https://github.com/BlochParty719/Arcade/issues"
   },
-  "homepage": "https://github.com/BlochParty719/Project-2#readme",
+  "homepage": "https://github.com/BlochParty719/Arcade#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "dotenv": "^8.2.0",
